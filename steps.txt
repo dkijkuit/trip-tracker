@@ -1,0 +1,21 @@
+0. Download and install the protoc compiler https://developers.google.com/protocol-buffers/docs/downloads
+1. Run 'go mod init github.com/dkijkuit/trip-tracker'
+2. Create folder structure:
+    - trip-tracker
+        | - cmd
+            | - client
+            | - server
+        | - grpc
+            | - triptracker
+                | - proto
+        | - service
+            | - triptracker
+
+3. Create grpc/triptracker/proto/triptracker.proto
+4. Generate code: protoc -I . grpc/triptracker/proto/triptracker.proto --go_out=plugins=grpc:.
+5. Implement boilerplate server code in a service abstraction. Create service/triptracker/triptrackerservice.go
+6. Create cmd/server/server.go and launch an instance of our grpc server
+7. Add the GetTrips rpc
+8. Generate code again
+9. Implement the GetTrips method
+10. See and test

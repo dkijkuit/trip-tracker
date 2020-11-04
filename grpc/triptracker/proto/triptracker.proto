@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option go_package = "grpc/triptracker/proto;triptrackerserver";
+
+message Trip {
+    int32 id = 1;
+    string startAddress = 2;
+    string destinationAddress = 3;
+    int32 peopleCount = 5;
+    int32 distance = 4;
+}
+
+message AddTripRequest {
+    Trip trip = 1;
+}
+
+message AddTripResponse {
+    bool added = 1;
+}
+
+message GetTripsRequest {}
+
+message GetTripsResponse {
+    repeated Trip trips = 1;
+}
+
+service TripService {
+    rpc AddTrip(AddTripRequest) returns (AddTripResponse){}
+    rpc GetTrips(GetTripsRequest) returns (GetTripsResponse){}
+}
